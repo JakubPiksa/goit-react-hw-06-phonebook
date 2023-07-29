@@ -1,3 +1,4 @@
+
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -18,10 +19,20 @@ const contactsSlice = createSlice({
     setFilter: (state, action) => {
       state.filter = action.payload;
     },
+
+    
+    fetchContacts: (state) => {
+ 
+      const defaultContacts = [
+        { id: 1, name: 'John Doe', number: '123456789' },
+        { id: 2, name: 'Jane Smith', number: '987654321' },
+      ];
+      state.contacts = defaultContacts;
+    },
   },
 });
 
-export const { addContact, deleteContact, setFilter } = contactsSlice.actions;
+export const { addContact, deleteContact, setFilter, fetchContacts } = contactsSlice.actions;
 
 export default configureStore({
   reducer: {

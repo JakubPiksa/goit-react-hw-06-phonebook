@@ -1,9 +1,11 @@
+
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import ContactForm from './components/ContactForm/ContactForm';
-import ContactList from './components/ContactList/ContactList';
-import Filter from './components/Filter/Filter';
-import { fetchContacts } from './components/ContactList/contactListSlice';
+import ContactForm from './ContactForm/ContactForm';
+import ContactList from './ContactList/ContactList';
+import Filter from './Filter/Filter';
+import { fetchContacts } from '../store/store'; 
+
 import css from './app.module.css';
 
 const App = () => {

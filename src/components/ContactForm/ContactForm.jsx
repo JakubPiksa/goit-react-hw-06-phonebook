@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../ContactList/contactListSlice';
+import { addContact } from '../../store/store'; // Poprawiona ścieżka importu
 import css from './contactForm.module.css';
 
 const ContactForm = () => {
