@@ -1,10 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import  App  from 'components/App';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'; 
+import App from './components/App'; 
+import store from './store/store';
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    {/* Obejmujemy komponent App Providerem, aby udostępnić dostęp do Redux Store */}
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
