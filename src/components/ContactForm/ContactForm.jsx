@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import css from './contactForm.module.css'
+import { useDispatch } from 'react-redux';
+import { addContact } from '../ContactList/contactListSlice';
+import css from './contactForm.module.css';
 
-
-const ContactForm = ({ onAddContact }) => {
+const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onAddContact(name, number);
+    dispatch(addContact({ name, number }));
     setName('');
     setNumber('');
   };
@@ -37,7 +39,9 @@ const ContactForm = ({ onAddContact }) => {
         title="Phone number must contain numbers only"
         required
       />
-      <button type="submit" className={css.button}>Add Contact</button>
+      <button type="submit" className={css.button}>
+        Add Contact
+      </button>
     </form>
   );
 };
