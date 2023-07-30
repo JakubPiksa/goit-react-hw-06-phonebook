@@ -7,7 +7,6 @@ import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* Obejmujemy komponent App Providerem, aby udostępnić dostęp do Redux Store */}
     <Provider store={store}>
       <App />
     </Provider>
