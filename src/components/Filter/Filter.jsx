@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from '../../store/store'; // Poprawiona ścieżka importu
+import { setFilter } from '../../store/store'; 
 import css from './filter.module.css';
 
 const Filter = () => {
