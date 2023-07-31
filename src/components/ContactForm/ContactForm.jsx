@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addContact } from '../../store/reducers/contacts';
 import { nanoid } from 'nanoid';
+import css from './contactForm.module.css'
 
 const ContactForm = ({ onAddContact }) => {
   const [name, setName] = useState('');
