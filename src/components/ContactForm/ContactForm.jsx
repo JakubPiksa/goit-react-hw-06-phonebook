@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addContact } from '../../store/store'; 
-import css from './contactForm.module.css';
+import { connect } from 'react-redux';
+import { addContact } from '../../store/reducers/contacts';
+import { nanoid } from 'nanoid';
 
-const ContactForm = () => {
+const ContactForm = ({ onAddContact }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(addContact({ name, number }));
+    onAddContact({ id: nanoid(), name, number });
     setName('');
     setNumber('');
   };
@@ -46,4 +45,8 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+const mapDispatchToProps = (dispatch) => ({
+  onAddContact: (contact) => dispatch(addContact(contact)),
+});
+
+export default connect(null, mapDispatchToProps)(ContactForm);

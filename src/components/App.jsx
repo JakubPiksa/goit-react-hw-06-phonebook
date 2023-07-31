@@ -1,27 +1,22 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { Provider } from 'react-redux';
+import store from '../store/store';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
-import { fetchContacts } from '../store/store'; 
-
 import css from './app.module.css';
 
 const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
   return (
-    <div>
-      <h1 className={css.h1}>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
-    </div>
+    <Provider store={store}>
+      <div>
+        <h1 className={css.h1}>Phonebook</h1>
+        <ContactForm />
+        <h2>Contacts</h2>
+        <Filter />
+        <ContactList />
+      </div>
+    </Provider>
   );
 };
 

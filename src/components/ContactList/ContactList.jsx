@@ -1,22 +1,14 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from '../../store/store'; 
-import css from './contactList.module.css';
+import { connect } from 'react-redux';
+import { deleteContact } from '../../store/reducers/contacts';
 
-const ContactList = () => {
-  const contacts = useSelector((state) => state.contacts.contacts);
-  const dispatch = useDispatch();
-
-  const handleDeleteContact = (contactId) => {
-    dispatch(deleteContact(contactId));
-  };
-
+const ContactList = ({ contacts, onDeleteContact }) => {
   return (
     <ul className={css.contactList}>
       {contacts.map((contact) => (
         <li key={contact.id}>
           {contact.name}: {contact.number}
-          <button onClick={() => handleDeleteContact(contact.id)} className={css.delete}>
+          <button onClick={() => onDeleteContact(contact.id)} className={css.delete}>
             Delete
           </button>
         </li>
@@ -25,4 +17,12 @@ const ContactList = () => {
   );
 };
 
-export default ContactList;
+const mapStateToProps = (state) => ({
+  contacts: state.contacts,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onDeleteContact: (contactId) => dispatch(deleteContact(contactId)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

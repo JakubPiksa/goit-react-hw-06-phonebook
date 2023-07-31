@@ -1,26 +1,26 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from '../../store/store'; 
-import css from './filter.module.css';
+import { connect } from 'react-redux';
+import { setFilter } from '../../store/reducers/filter';
 
-const Filter = () => {
-  const filter = useSelector((state) => state.contacts.filter);
-  const dispatch = useDispatch();
-
-  const handleFilterChange = (event) => {
-    dispatch(setFilter(event.target.value));
-  };
-
+const Filter = ({ filter, onFilterChange }) => {
   return (
     <input
       type="text"
       name="filter"
       value={filter}
-      onChange={handleFilterChange}
+      onChange={onFilterChange}
       placeholder="Search contacts by name"
       className={css.input}
     />
   );
 };
 
-export default Filter;
+const mapStateToProps = (state) => ({
+  filter: state.filter,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onFilterChange: (event) => dispatch(setFilter(event.target.value)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);
