@@ -12,10 +12,9 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Odczytanie danych z local storage przy załadowaniu aplikacji
     const storedContacts = localStorage.getItem('contacts');
     if (storedContacts) {
-      dispatch(setContacts(JSON.parse(storedContacts))); // Ustawienie danych z local storage za pomocą akcji Redux
+      dispatch(setContacts(JSON.parse(storedContacts))); 
     }
   }, [dispatch]);
 
