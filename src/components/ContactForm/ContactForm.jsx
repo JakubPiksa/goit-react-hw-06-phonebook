@@ -24,7 +24,7 @@ const ContactForm = ({ onAddContact }) => {
         value={name}
         onChange={(event) => setName(event.target.value)}
         placeholder="Name"
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        pattern="^[a-zA-Zа-яА-Я]+([' -]?[a-zA-Zа-яА-Я ]?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces."
         required
       />
