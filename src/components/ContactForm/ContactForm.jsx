@@ -2,19 +2,24 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addContact } from '../../store/reducers/contacts';
 import { nanoid } from 'nanoid';
-import css from './contactForm.module.css'
+import { useSelector } from 'react-redux'; // Dodaj ten import
+import css from './contactForm.module.css';
 
 const ContactForm = ({ onAddContact }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  const contacts = useSelector((state) => state.contacts); // Dodaj tę linię
 
   const handleSubmit = (event) => {
     event.preventDefault();
     onAddContact({ id: nanoid(), name, number });
     setName('');
     setNumber('');
-  };
 
+const newContacts = [...contacts, { id: nanoid(), name, number }];
+    localStorage.setItem('contacts', JSON.stringify(newContacts));
+  };
   return (
     <form onSubmit={handleSubmit} className={css.form}>
       <input
