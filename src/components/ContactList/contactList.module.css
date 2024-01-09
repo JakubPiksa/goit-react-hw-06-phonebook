@@ -1,15 +1,28 @@
 .contactList {
-  border: 1px dashed #e00b6f;
+  border: 1px dashed #d1d0d0;
+  border-radius: 20px;
+}
+
+.contactList li {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .delete {
   padding: 10px;
-  font-size: 10px;
+  font-size: 12px;
   text-align: center;
-  border-width: 3px;
+  border-width: 2px;
   border-radius: 14px;
   border-style: solid;
-  border-color: #e00b6f;
-  box-shadow: 1px 0px 5px 0px rgba(42, 42, 42, 0.87);
+  border-color: #9cd2ff;
   font-family: sans-serif;
+  margin-left: 20px;
+}
+
+.delete:hover,
+.delete:focus {
+  border-color: #ff5050;
 }

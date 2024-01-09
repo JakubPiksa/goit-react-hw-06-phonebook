@@ -2,24 +2,25 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addContact } from '../../store/reducers/contacts';
 import { nanoid } from 'nanoid';
-import { useSelector } from 'react-redux'; // Dodaj ten import
+import { useSelector } from 'react-redux';
 import css from './contactForm.module.css';
 
 const ContactForm = ({ onAddContact }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector((state) => state.contacts); // Dodaj tę linię
+  const contacts = useSelector(state => state.contacts);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
     onAddContact({ id: nanoid(), name, number });
     setName('');
     setNumber('');
 
-const newContacts = [...contacts, { id: nanoid(), name, number }];
+    const newContacts = [...contacts, { id: nanoid(), name, number }];
     localStorage.setItem('contacts', JSON.stringify(newContacts));
   };
+
   return (
     <form onSubmit={handleSubmit} className={css.form}>
       <input
@@ -27,7 +28,7 @@ const newContacts = [...contacts, { id: nanoid(), name, number }];
         type="text"
         name="name"
         value={name}
-        onChange={(event) => setName(event.target.value)}
+        onChange={event => setName(event.target.value)}
         placeholder="Name"
         pattern="^[a-zA-Zа-яА-Я]+([' -]?[a-zA-Zа-яА-Я ]?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces."
@@ -38,7 +39,7 @@ const newContacts = [...contacts, { id: nanoid(), name, number }];
         type="tel"
         name="number"
         value={number}
-        onChange={(event) => setNumber(event.target.value)}
+        onChange={event => setNumber(event.target.value)}
         placeholder="Phone number"
         pattern="\d{1,9}"
         title="Phone number must contain numbers only"
@@ -51,8 +52,8 @@ const newContacts = [...contacts, { id: nanoid(), name, number }];
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onAddContact: (contact) => dispatch(addContact(contact)),
+const mapDispatchToProps = dispatch => ({
+  onAddContact: contact => dispatch(addContact(contact)),
 });
 
 export default connect(null, mapDispatchToProps)(ContactForm);

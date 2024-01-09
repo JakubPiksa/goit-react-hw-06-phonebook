@@ -6,6 +6,7 @@ import { setContacts } from '../store/reducers/contacts';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
+import Header from './Header/Header';
 import css from './app.module.css';
 
 const App = () => {
@@ -14,16 +15,17 @@ const App = () => {
   useEffect(() => {
     const storedContacts = localStorage.getItem('contacts');
     if (storedContacts) {
-      dispatch(setContacts(JSON.parse(storedContacts))); 
+      dispatch(setContacts(JSON.parse(storedContacts)));
     }
   }, [dispatch]);
 
   return (
     <Provider store={store}>
-      <div>
-        <h1 className={css.h1}>Phonebook</h1>
+      <div className={css.container}>
+        <Header />
+        <h2 className={css.form}>Add new contact</h2>
         <ContactForm />
-        <h2>Contacts</h2>
+        <h2 className={css.form}>Search Contacts</h2>
         <Filter />
         <ContactList />
       </div>

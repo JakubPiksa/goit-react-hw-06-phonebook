@@ -5,28 +5,34 @@
 
 .formInput {
   padding: 10px;
-  font-size: 10px;
+  font-size: 12px;
   text-align: center;
-  border-width: 3px;
+  border-width: 2px;
   border-radius: 14px;
   border-style: solid;
-  border-color: #e00b6f;
-  box-shadow: 1px 0px 5px 0px rgba(42, 42, 42, 0.87);
+  border-color: #9cd2ff;
   font-family: sans-serif;
+}
+
+.formInput:hover,
+.formInput:focus {
+  border-color: #88c6f8;
+  background-color: rgb(253, 252, 252);
 }
 
 .button {
   padding: 10px;
-  font-size: 10px;
+  font-size: 12px;
   text-align: center;
-  border-width: 3px;
+  border-width: 2px;
   border-radius: 14px;
   border-style: solid;
-  border-color: #e00b6f;
-  box-shadow: 1px 0px 5px 0px rgba(42, 42, 42, 0.87);
+  border-color: #9cd2ff;
   font-family: sans-serif;
 }
 
 .button:hover {
-  background-color: aqua;
+  background-color: rgb(253, 252, 252);
+  border-color: #88c6f8;
+  transition: ease-in-out 120ms;
 }
